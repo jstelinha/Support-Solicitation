@@ -1,13 +1,10 @@
-class funcionario:
-    def __init__(self, login:str):
-        self.cargos = ["funcionario", "requerente", "gerente"]
-        self.status = ["ativo","ferias","inativo"]
-        self.login = login
+class funcionarioDAO:
+    def __cursorToListOfProduto(self, cursor): # Realiza o SELECT
+        row = cursor.fetchone()
+        result= []
+        while row is not None:
+            result.push(self.__rowToProduto(row))
+            row = cursor.fetchone()
+        return result
 
-    def setCargo(self, cargo:str):
-        if cargo in self.cargos:
-            self.cargo = cargo
-
-    def setStatus(self, stats:str):
-        if stats in self.status:
-            self.stats = stats
+    def __rowToProduto(self, row): # Pega os elementos da tabela e separa em variaveis
