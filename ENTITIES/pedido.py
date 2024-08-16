@@ -10,3 +10,7 @@ class pedido:
     def setPriority(self, priority:str):
         if priority in self.prioridades:
             self.prioridade = priority
+    
+    def setResponse(self, response:str):
+        if response.lower() in ["sim","nao", "y", "n", "s"]:
+            self.response = response

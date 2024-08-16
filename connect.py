@@ -1,9 +1,7 @@
 import mysql.connector
-from mysql.connector import Error
-import pandas as pd
+# pip install mysql-connector-python
 
-def create_server_connection(host_name, user_name, user_password):
-    connection = None
+def __connect(host_name, user_name, user_password):
     try:
         connection = mysql.connector.connect(
             host=host_name,
@@ -11,7 +9,7 @@ def create_server_connection(host_name, user_name, user_password):
             passwd=user_password
         )
         print("MySQL Database connection successful")
-    except Error as err:
+    except Exception as err:
         print(f"Error: '{err}'")
 
     return connection

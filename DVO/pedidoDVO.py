@@ -1,4 +1,8 @@
-class pedido:
+from connect import __connect 
+connection = __connect()
+
+
+class pedidoDVO:
     def __init__(self, ids:int):
         self.prioridades = ["emergencia", "alta", "media", "baixa", "minima"]
         self.id = ids

@@ -1,12 +1,32 @@
-class pedido:
-    def __init__(self, ids:int):
-        self.prioridades = ["emergencia", "alta", "media", "baixa", "minima"]
-        self.id = ids
+from connect import __connect 
 
-    def setDescrip(self, desc:str):
-        if desc in self.status:
-            self.desc = desc
+
+class pedidoDAO:
+    def __cursorToListProduto(self, row):
+        connection = __connect()
+        cursor = connection.cursor()
+        row = cursor.fetchone()
+
+    def __rowToProduto(self, row):
+        pedido = pedido()
+        pedido.ids = (row['ids'])
+        pedido.desc = (row['desc'])
+        pedido.priority = (row['priority'])
+        pedido.response = (row(['response']))
+        return pedido
+
+    def create(self):
+        pedido = pedido()
+        return pedido
     
-    def setPriority(self, priority:str):
-        if priority in self.prioridades:
-            self.prioridade = priority
+    def update(self):
+        connection = __connect()
+        cursor = connection.cursor()
+
+        cursor.execute(""" """)
+
+        cursor.close()
+        connection.close()
+
+    def delete(self):
+        return None
