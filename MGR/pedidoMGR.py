@@ -1,12 +1,19 @@
-class pedido:
-    def __init__(self, ids:int):
-        self.prioridades = ["emergencia", "alta", "media", "baixa", "minima"]
-        self.id = ids
+from ENTITIES.funcionario import funcionario
+from ENTITIES.pedido import pedido
+from ENTITIES.setor import setor    
 
-    def setDescrip(self, desc:str):
-        if desc in self.status:
-            self.desc = desc
-    
-    def setPriority(self, priority:str):
-        if priority in self.prioridades:
-            self.prioridade = priority
+class pedidoMGR:
+    def requisitarSuporte(desc:str, priority:str):
+        try:
+            suporte = pedido()
+            suporte.setDescrip(desc)
+            suporte.setPriority(priority)
+            suporte.setResponse("pendente")
+        except Exception as e:
+            return e
+         
+    def validarPedido(suporte:object, response:str):
+        try:
+            suporte.setResponse(response)
+        except Exception as e:
+            return e

@@ -1,7 +1,6 @@
 class pedido:
-    def __init__(self, ids:int):
+    def __init__(self):
         self.prioridades = ["emergencia", "alta", "media", "baixa", "minima"]
-        self.id = ids
 
     def setDescrip(self, desc:str):
         if desc in self.status:
@@ -12,5 +11,5 @@ class pedido:
             self.prioridade = priority
     
     def setResponse(self, response:str):
-        if response.lower() in ["sim","nao", "y", "n", "s"]:
+        if response.lower() in ["sim","nao", "pendente", "y", "n", "s", "p"]:
             self.response = response
