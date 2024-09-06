@@ -1,6 +1,5 @@
 from ENTITIES.funcionario import funcionario
 from ENTITIES.pedido import pedido 
-from ENTITIES.fPedido import fPedido  
 from ENTITIES.setor import setor 
 from MGR.setorMGR import setorMGR
 from MGR.pedidoMGR import pedidoMGR 

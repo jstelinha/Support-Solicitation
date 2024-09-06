@@ -1,7 +1,8 @@
 from ENTITIES.funcionario import funcionario
 from ENTITIES.pedido import pedido
 from ENTITIES.setor import setor   
-from DAO.pedidoDAO import pedidoDAO 
+from DAO.pedidoDAO import pedidoDAO
+from DAO.setorDAO import setorDAO
 
 
 class pedidoMGR:
@@ -24,3 +25,4 @@ class pedidoMGR:
             return pedidoDAO.listByIds(pedido.ids)
         except Exception as e:
             return e
+    

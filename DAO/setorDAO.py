@@ -11,6 +11,7 @@ class setorDAO:
         setor = setor()
         setor.ids = (row['ids'])
         setor.nome = (row['nome'])
+        setor.pedidos = (row['pedidos'])
         return setor
 
     def create(self):
@@ -21,13 +22,13 @@ class setorDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if not hasattr(setor, 'id'):
-        cursor.execute('INSERT INTO setor (ids, nome) VALUES(?, ?)',
-          setor.ids, setor.nome)
+      if not hasattr(setor, 'ids'):
+        cursor.execute('INSERT INTO setor (ids, nome, pedidos) VALUES(?, ?)',
+          setor.ids, setor.pedidos, setor.nome)
 
       else:
-        cursor.execute('UPDATE setor SET nome=? WHERE ids = ?',
-          setor.nome, setor.id)
+        cursor.execute('UPDATE setor SET nome=?, pedidos=? WHERE ids = ?',
+          setor.nome, setor.pedidos, setor.ids)
      
       cursor.close()
       connection.close()
@@ -37,12 +38,12 @@ class setorDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if hasattr(setor, 'id'):
-        cursor.execute('DELETE FROM setor WHERE id = ?', setor.id)
+      if hasattr(setor, 'ids'):
+        cursor.execute('DELETE FROM setor WHERE id = ?', setor.ids)
         cursor.close()
         connection.close()
         if cursor.rowcount == 0:
-          raise "Não foi possível excluir um setor com id: " + str(setor.id)          
+          raise "Não foi possível excluir um setor com id: " + str(setor.ids)          
       else:
         cursor.close()
         connection.close()
