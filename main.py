@@ -11,31 +11,35 @@ from DVO.setorDVO import setorDVO
 
 def main():
 
+    ##### Pré requisitos
+    setor1 = setor(1, "TI")
+    setor2 = setor(2, "Manutenção predial")
+
+    setorDAO.update(setor1)
+    setorDAO.update(setor2)
+
     gerente = funcionario().gerente()
     assistente = funcionario().assistente()
     requerente = funcionario().requerente()
-    assistenteF = funcionario().assistente()
-
-    pedidoEmergencia = pedido()
-    pedidoBaixo = pedido()
-    pedidoEmergencia.setDescrip("Um monitor da sala xxxx precisa ser consertado.")
-    pedidoBaixo.setDescrip("Um bebedouro da sala xxxx não está funcionando mais.")
-    pedidoEmergencia.setPriority("eMergencia")
-    pedidoBaixo.setPriority("Baixo")
-
     gerente.setStatus("ativo")
+    gerente.setSetor("TI")
     assistente.setStatus("ativo")
+    assistente.setSetor("TI")
     requerente.setStatus("ativo")
-    assistenteF.setStatus("ferias")
 
-    setor1 = setor("TI")
-    setor2 = setor("Manutenção predial")
 
-    pedidoMGR.requisitarSuporte(pedidoEmergencia(), setor1())
-    pedidoMGR.requisitarSuporte(pedidoBaixo(), setor2())
-    pedidoMGR.validarPedido(pedidoEmergencia(), "sim")
-    pedidoMGR.validarPedido(pedidoBaixo(), "nao")
+    ### Caso de uso Requisitar Suporte
+    listaSetores = setorMGR.listaSetores()
+    listaPrioridade = pedidoMGR.listarPrioridadePedido()
+    listaResponse = pedidoMGR.
 
-    dic = pedidoDAO.create()
+    pedido = pedido(requerente.login, listaSetores[0])
+    pedido.setDescrip("Um monitor da sala xxxx precisa ser consertado.")
+    pedido.setPriority(listaPrioridade[0])
+
+    pedidoMGR.realizarPedidoSuporte(pedido(), setor1())
+##################################################################################################
+
+    pedidoMGR.validarPedido(pedido(), "sim")
 
 main()

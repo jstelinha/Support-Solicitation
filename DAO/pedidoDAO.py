@@ -1,4 +1,5 @@
 from connect import DBController 
+from ENTITIES.pedido import prioridade, response
 
 
 class pedidoDAO:
@@ -9,7 +10,8 @@ class pedidoDAO:
 
     def __rowToPedido(self, row):
         pedido = pedido()
-        pedido.ids = (row['ids'])
+        pedido.idPedido = (row['idPedido'])
+        pedido.login = (row['login'])
         pedido.desc = (row['desc'])
         pedido.priority = (row['priority'])
         pedido.response = (row['response'])
@@ -23,12 +25,12 @@ class pedidoDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if not hasattr(pedido, 'ids'):
-        cursor.execute('INSERT INTO pedido (ids, desc, priority, response, fluxo) VALUES(?, ?, ?, ?)',
-          pedido.ids, pedido.desc, pedido.priority, pedido.response, pedido.fluxo)
+      if not hasattr(pedido, 'idPedido'):
+        cursor.execute('INSERT INTO pedido (idPedido, login, desc, priority, response, fluxo) VALUES(?, ?, ?, ?)',
+          pedido.idPedido, pedido.login, pedido.desc, pedido.priority, pedido.response, pedido.fluxo)
       else:
-        cursor.execute('UPDATE pedido SET desc=?, priority=?, response=? WHERE ids = ?',
-          pedido.ids, pedido.desc, pedido.priority, pedido.response)
+        cursor.execute('UPDATE pedido SET login=? desc=?, priority=?, response=? WHERE idPedido = ?',
+          pedido.login, pedido.desc, pedido.priority, pedido.response, pedido.idPedido)
      
       cursor.close()
       connection.close()
@@ -38,12 +40,12 @@ class pedidoDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if hasattr(pedido, 'ids'):
-        cursor.execute('DELETE FROM pedido WHERE ids = ?', pedido.ids)
+      if hasattr(pedido, 'idPedido'):
+        cursor.execute('DELETE FROM pedido WHERE idPedido = ?', pedido.idPedido)
         cursor.close()
         connection.close()
         if cursor.rowcount == 0:
-          raise "Não foi possível excluir um pedido com id: " + str(pedido.ids)          
+          raise "Não foi possível excluir um pedido com id: " + str(pedido.idPedido)          
       else:
         cursor.close()
         connection.close()
@@ -51,11 +53,11 @@ class pedidoDAO:
 
       return True
 
-    def listPedidosByNome(self, nome):
+    def listPedidosById(self, id):
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      cursor.execute('SELECT * FROM pedido WHERE nome = ?', nome)
+      cursor.execute('SELECT * FROM pedido WHERE id = ?', id)
       
       result = self.__cursorToListPedido(cursor)
      
@@ -63,4 +65,10 @@ class pedidoDAO:
       connection.close()
 
       return result
+
+    def listPrioridades(self):
+      return prioridade.list()
+
+    def listResponse(self):
+       return response.list()
     

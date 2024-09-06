@@ -9,7 +9,7 @@ class fluxoDAO:
 
     def __rowToFluxo(self, row):
         fluxo = fluxo()
-        fluxo.ids = (row['ids'])
+        fluxo.idPedido = (row['idPedido'])
         fluxo.status = (row['status'])
         fluxo.data = (row['data'])
         return fluxo
@@ -22,12 +22,12 @@ class fluxoDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if not hasattr(fluxo, 'ids'):
-        cursor.execute('INSERT INTO fluxo (ids, status, data) VALUES(?, ?, ?)',
-          fluxo.ids, fluxo.status, fluxo.data)
+      if not hasattr(fluxo, 'idPedido'):
+        cursor.execute('INSERT INTO fluxo (idPedido, status, data) VALUES(?, ?, ?)',
+          fluxo.idPedido, fluxo.status, fluxo.data)
       else:
-        cursor.execute('UPDATE fluxo SET status=?, data=? WHERE ids = ?',
-          fluxo.status, fluxo.data, fluxo.ids)
+        cursor.execute('UPDATE fluxo SET status=?, data=? WHERE idPedido = ?',
+          fluxo.status, fluxo.data, fluxo.idPedido)
      
       cursor.close()
       connection.close()
@@ -37,12 +37,12 @@ class fluxoDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if hasattr(fluxo, 'ids'):
-        cursor.execute('DELETE FROM fluxo WHERE ids = ?', fluxo.ids)
+      if hasattr(fluxo, 'idPedido'):
+        cursor.execute('DELETE FROM fluxo WHERE idPedido = ?', fluxo.idPedido)
         cursor.close()
         connection.close()
         if cursor.rowcount == 0:
-          raise "Não foi possível excluir um fluxo com id: " + str(fluxo.ids)          
+          raise "Não foi possível excluir um fluxo com id: " + str(fluxo.idPedido)          
       else:
         cursor.close()
         connection.close()

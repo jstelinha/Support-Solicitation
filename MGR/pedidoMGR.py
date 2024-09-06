@@ -6,23 +6,29 @@ from DAO.setorDAO import setorDAO
 
 
 class pedidoMGR:
-    def requisitarSuporte(pedido:object, setor:object):
+    def listarSetor(self):
+        setorDAO = setorDAO.create()
+        return setorDAO.list()
+    
+    def listarPrioridadePedido(self):
+        pedidoDAO = pedidoDAO.create()
+        return pedidoDAO.listPrioridades()
+    
+    def listarResponse(self):
+        pedidoDAO = pedidoDAO.create()
+        return pedidoDAO.listResponse
+    
+    def realizarPedidoSuporte(pedido:object, setor:object):
         try:
-            suporte = pedido()
             pedidoDAO.create()
-            suporte.setResponse("pendente")
-            setor.setPedidos(suporte)
-            pedidoDAO.update(suporte)
-            return pedidoDAO.listByIds(suporte.ids)
+            setorDAO.create()
+            pedido.setResponse()
+            setor.setPedidos(pedido.idPedido)
+            pedidoDAO.update(pedido)
+            setorDAO.update(setor)
+            return setorDAO.listPedidosById(pedido.idPedido)
 
         except Exception as e:
             return e
-         
-    def validarPedido(pedido:object, response:str):
-        try:
-            pedido.setResponse(response)
-            pedidoDAO.update(pedido)
-            return pedidoDAO.listByIds(pedido.ids)
-        except Exception as e:
-            return e
-    
+
+

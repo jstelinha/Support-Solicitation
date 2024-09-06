@@ -1,7 +1,7 @@
 class fPedido:
-    def __init__(self, pedido:object):
+    def __init__(self, idPedido:int):
         self.status = ["retido", "aberto", "cancelado", "concluido", "andamento"]
-        self.pedido = pedido
+        self.idPedido = idPedido
 
     def setStatus(self, stats:str):
         if stats in self.status:

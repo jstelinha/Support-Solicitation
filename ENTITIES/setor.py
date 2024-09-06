@@ -1,8 +1,8 @@
 class setor:
-    def __init__(self, ids:int, nome):
+    def __init__(self, ids:int, nome:str):
         self.pedidos = []
         self.nome = nome
-        self.id = ids
+        self.idSetor = ids
         
-    def setPedidos(self, pedido:object):
-        self.pedidos.append(pedido)
+    def setPedidos(self, idPedido:int):
+        self.pedidos.append(idPedido)

@@ -9,7 +9,7 @@ class setorDAO:
 
     def __rowToProduto(self, row):
         setor = setor()
-        setor.ids = (row['ids'])
+        setor.idSetor = (row['idSetor'])
         setor.nome = (row['nome'])
         setor.pedidos = (row['pedidos'])
         return setor
@@ -23,12 +23,12 @@ class setorDAO:
       cursor = connection.cursor()
 
       if not hasattr(setor, 'ids'):
-        cursor.execute('INSERT INTO setor (ids, nome, pedidos) VALUES(?, ?)',
-          setor.ids, setor.pedidos, setor.nome)
+        cursor.execute('INSERT INTO setor (idSetor, nome, pedidos) VALUES(?, ?)',
+          setor.idSetor, setor.pedidos, setor.nome)
 
       else:
-        cursor.execute('UPDATE setor SET nome=?, pedidos=? WHERE ids = ?',
-          setor.nome, setor.pedidos, setor.ids)
+        cursor.execute('UPDATE setor SET nome=?, pedidos=? WHERE idSetor = ?',
+          setor.nome, setor.pedidos, setor.idSetor)
      
       cursor.close()
       connection.close()
@@ -38,12 +38,12 @@ class setorDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      if hasattr(setor, 'ids'):
-        cursor.execute('DELETE FROM setor WHERE id = ?', setor.ids)
+      if hasattr(setor, 'idSetor'):
+        cursor.execute('DELETE FROM setor WHERE idSetor = ?', setor.idSetor)
         cursor.close()
         connection.close()
         if cursor.rowcount == 0:
-          raise "Não foi possível excluir um setor com id: " + str(setor.ids)          
+          raise "Não foi possível excluir um setor com idSetor: " + str(setor.idSetor)          
       else:
         cursor.close()
         connection.close()
@@ -51,11 +51,37 @@ class setorDAO:
 
       return True
 
-    def listByNome(self, nome):
+    def listaSetores(self):
+        connection = DBController().obterConnection();
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM setor')
+
+        result = self.__cursorToListFluxo(cursor)
+
+        cursor.close()
+        connection.close()
+
+        return result
+
+    def listPedidoById(self, id):
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      cursor.execute('SELECT * FROM setor WHERE nome = ?', nome)
+      cursor.execute('SELECT pedido FROM setor WHERE id = ?', id)
+      
+      result = self.__cursorToListPedido(cursor)
+     
+      cursor.close()
+      connection.close()
+
+      return result
+
+    def listRelatorio(self):
+      connection = DBController().obterConnection();
+      cursor = connection.cursor()
+
+      cursor.execute('SELECT * FROM setor')
       
       result = self.__cursorToListOfProduto(cursor)
      
