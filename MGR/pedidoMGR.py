@@ -4,19 +4,17 @@ from ENTITIES.setor import setor
 
 
 class pedidoMGR:
-    def requisitarSuporte(desc:str, setor:object, priority:str):
+    def requisitarSuporte(pedido:object, setor:object):
         try:
             suporte = pedido()
-            suporte.setDescrip(desc)
-            suporte.setPriority(priority)
             suporte.setResponse("pendente")
             setor.setPedidos(suporte)
 
         except Exception as e:
             return e
          
-    def validarPedido(suporte:object, response:str):
+    def validarPedido(pedido:object, response:str):
         try:
-            suporte.setResponse(response)
+            pedido.setResponse(response)
         except Exception as e:
             return e

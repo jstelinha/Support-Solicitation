@@ -12,7 +12,7 @@ class pedidoDAO:
         pedido.ids = (row['ids'])
         pedido.desc = (row['desc'])
         pedido.priority = (row['priority'])
-        pedido.response = (row(['response']))
+        pedido.response = (row['response'])
         return pedido
 
     def create(self):

@@ -7,7 +7,7 @@ class pedido:
             self.desc = desc
     
     def setPriority(self, priority:str):
-        if priority in self.prioridades:
+        if priority.lower() in self.prioridades:
             self.prioridade = priority
     
     def setResponse(self, response:str):
