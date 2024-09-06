@@ -8,12 +8,10 @@ from DAO.pedidoDAO import pedidoDAO
 from DAO.setorDAO import setorDAO
 from DVO.pedidoDVO import pedidoDVO 
 from DVO.setorDVO import setorDVO
-from connect import __connect
 
 
 def main():
-    conexao = __connect("host_name", "user_name", "user_password")
-    
+
     gerente = funcionario().gerente()
     assistente = funcionario().assistente()
     requerente = funcionario().requerente()
@@ -38,5 +36,7 @@ def main():
     pedidoMGR.requisitarSuporte(pedidoBaixo(), setor2())
     pedidoMGR.validarPedido(pedidoEmergencia(), "sim")
     pedidoMGR.validarPedido(pedidoBaixo(), "nao")
+
+    dic = pedidoDAO.create()
 
 main()

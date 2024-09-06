@@ -1,6 +1,7 @@
 from ENTITIES.fPedido import fPedido
 from ENTITIES.pedido import pedido
-import DAO.setorDAO 
+import DAO.setorDAO
+from DAO.setorDAO import setorDAO
 
 
 class setorMGR:
