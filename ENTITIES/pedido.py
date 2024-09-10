@@ -20,9 +20,9 @@ class response:
         return [sim,nao,pendente]
 
 class pedido:
-    def __init__(self, loginFuncionario:str, ids:int):
+    def __init__(self, loginFuncionario:str, nSetor:int):
         self.loginFuncionario = loginFuncionario
-        self.idPedido = ids
+        self.idPedido = nSetor
 
     def setDescrip(self, desc:str):
         if desc in self.status:

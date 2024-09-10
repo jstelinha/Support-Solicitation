@@ -2,12 +2,17 @@ from connect import DBController
 
 
 class setorDAO:
-    def __cursorToListProduto(self, row):
+    def __cursorToListSetor(self, row):
         connection = DBController().obterConnection()
         cursor = connection.cursor()
         row = cursor.fetchone()
+        result = []
+        while row is not None:
+          result.push(self.__rowToSetor(row))
+          row = cursor.fetchone()
+        return result
 
-    def __rowToProduto(self, row):
+    def __rowToSetor(self, row):
         setor = setor()
         setor.idSetor = (row['idSetor'])
         setor.nome = (row['nome'])
@@ -57,7 +62,7 @@ class setorDAO:
 
         cursor.execute('SELECT * FROM setor')
 
-        result = self.__cursorToListFluxo(cursor)
+        result = self.__cursorToListSetor(cursor)
 
         cursor.close()
         connection.close()
@@ -70,7 +75,7 @@ class setorDAO:
 
       cursor.execute('SELECT pedido FROM setor WHERE id = ?', id)
       
-      result = self.__cursorToListPedido(cursor)
+      result = self.__cursorToListSetor(cursor)
      
       cursor.close()
       connection.close()
@@ -83,9 +88,10 @@ class setorDAO:
 
       cursor.execute('SELECT * FROM setor')
       
-      result = self.__cursorToListOfProduto(cursor)
+      result = self.__cursorToListSetor(cursor)
      
       cursor.close()
       connection.close()
 
       return result
+    

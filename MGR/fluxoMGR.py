@@ -1,5 +1,5 @@
-from ENTITIES.fluxo import fPedido
-from DAO.fluxoDAO import fluxoDAO
+from ENTITIES.fluxo import *
+from DAO.fluxoDAO import *
 
 
 class fluxoMGR:

@@ -1,12 +1,12 @@
-from ENTITIES.funcionario import funcionario
-from ENTITIES.pedido import pedido 
-from ENTITIES.setor import setor 
-from MGR.setorMGR import setorMGR
-from MGR.pedidoMGR import pedidoMGR 
-from DAO.pedidoDAO import pedidoDAO 
-from DAO.setorDAO import setorDAO
-from DVO.pedidoDVO import pedidoDVO 
-from DVO.setorDVO import setorDVO
+from ENTITIES.funcionario import *
+from ENTITIES.pedido import * 
+from ENTITIES.setor import * 
+from MGR.setorMGR import *
+from MGR.pedidoMGR import * 
+from DAO.pedidoDAO import * 
+from DAO.setorDAO import *
+from DVO.pedidoDVO import * 
+from DVO.setorDVO import *
 
 
 def main():
@@ -29,15 +29,15 @@ def main():
 
 
     ### Caso de uso Requisitar Suporte
-    listaSetores = setorMGR.listaSetores()
+    listaSetores = setorMGR.listarSetor()
     listaPrioridade = pedidoMGR.listarPrioridadePedido()
-    listaResponse = pedidoMGR.
+    listaResponse = pedidoMGR.listarResponse()
 
     pedido = pedido(requerente.login, listaSetores[0])
     pedido.setDescrip("Um monitor da sala xxxx precisa ser consertado.")
     pedido.setPriority(listaPrioridade[0])
 
-    pedidoMGR.realizarPedidoSuporte(pedido(), setor1())
+    pedidoMGR.realizarPedidoSuporte(pedido(), pedido.setor)
 ##################################################################################################
 
     pedidoMGR.validarPedido(pedido(), "sim")

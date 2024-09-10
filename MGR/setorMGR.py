@@ -1,12 +1,12 @@
-from ENTITIES.pedido import pedido
-from DAO.setorDAO import setorDAO
+from ENTITIES.pedido import *
+from DAO.setorDAO import *
 
 
 class setorMGR:
-    def entregaRelatorio(response:str, setor:object):
-        try:
-            setorDAO.create()
-            setorDAO.update(setor)
-            return setorDAO.listRelatorio(setor.nome) 
-        except Exception as e:
-            return e
+        def listarSetor(self):
+            try:
+                setorDAO = setorDAO.create()
+                return setorDAO.listaSetores()
+        
+            except Exception as e:
+                return e

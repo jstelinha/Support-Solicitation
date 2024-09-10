@@ -7,6 +7,11 @@ class pedidoDAO:
         connection = DBController().obterConnection()
         cursor = connection.cursor()
         row = cursor.fetchone()
+        result = []
+        while row is not None:
+          result.push(self.__rowToPedido(row))
+          row = cursor.fetchone()
+        return result
 
     def __rowToPedido(self, row):
         pedido = pedido()
@@ -67,8 +72,8 @@ class pedidoDAO:
       return result
 
     def listPrioridades(self):
-      return prioridade.list()
+      return prioridade.lista()
 
     def listResponse(self):
-       return response.list()
+       return response.lista()
     

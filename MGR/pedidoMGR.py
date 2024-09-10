@@ -1,28 +1,34 @@
-from ENTITIES.funcionario import funcionario
-from ENTITIES.pedido import pedido
-from ENTITIES.setor import setor   
-from DAO.pedidoDAO import pedidoDAO
-from DAO.setorDAO import setorDAO
+from ENTITIES.funcionario import *
+from ENTITIES.pedido import *
+from ENTITIES.setor import *   
+from DAO.pedidoDAO import *
+from DAO.setorDAO import *
 
 
 class pedidoMGR:
-    def listarSetor(self):
-        setorDAO = setorDAO.create()
-        return setorDAO.list()
     
     def listarPrioridadePedido(self):
-        pedidoDAO = pedidoDAO.create()
-        return pedidoDAO.listPrioridades()
+        try:
+            pedidoDAO = pedidoDAO.create()
+            return pedidoDAO.listPrioridades()
+        
+        except Exception as e:
+            return e
     
     def listarResponse(self):
-        pedidoDAO = pedidoDAO.create()
-        return pedidoDAO.listResponse
+        try:
+            pedidoDAO = pedidoDAO.create()
+            return pedidoDAO.listResponse()
+        
+        except Exception as e:
+            return e
+
     
     def realizarPedidoSuporte(pedido:object, setor:object):
         try:
             pedidoDAO.create()
             setorDAO.create()
-            pedido.setResponse()
+            pedido.setResponse(pedidoMGR.listarResponse()[2])
             setor.setPedidos(pedido.idPedido)
             pedidoDAO.update(pedido)
             setorDAO.update(setor)
