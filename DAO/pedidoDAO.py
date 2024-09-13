@@ -1,4 +1,4 @@
-from main.connect import DBController 
+from DAO.connect import DBController 
 from ENTITIES.pedidos import prioridade, response
 
 

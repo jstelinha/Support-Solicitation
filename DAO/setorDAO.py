@@ -1,4 +1,4 @@
-from MAIN.connect import DBController
+from DAO.connect import DBController
 from ENTITIES.setor import setor
 
 

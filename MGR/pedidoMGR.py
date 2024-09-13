@@ -1,8 +1,5 @@
-from ENTITIES.funcionario import *
-from ENTITIES.pedidos import *
-from ENTITIES.setor import *   
-from DAO.pedidoDAO import *
-from DAO.setorDAO import *
+from DAO.pedidoDAO import pedidoDAO
+from DAO.setorDAO import setorDAO
 
 
 class pedidoMGR:
