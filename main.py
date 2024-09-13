@@ -1,30 +1,30 @@
-from ENTITIES.funcionario import funcionario
-from ENTITIES.pedidos import pedido, prioridade, response
-from ENTITIES.setor import setor 
-from MGR.setorMGR import setorMGR
-from MGR.pedidoMGR import pedidoMGR 
-from DAO.setorDAO import setorDAO
-from DVO.pedidoDVO import pedidoDVO 
-from DVO.setorDVO import setorDVO
+from ENTITIES.Funcionario import Funcionario
+from ENTITIES.Pedidos import Pedidos, prioridade, response
+from ENTITIES.Setor import Setor 
+from MGR.SetorMGR import SetorMGR
+from MGR.PedidoMGR import PedidoMGR 
+from DAO.SetorDAO import SetorDAO
+from DVO.PedidoDVO import PedidoDVO 
+from DVO.SetorDVO import SetorDVO
 
 
 def main():
     
     ##### Pré requisitos
-    setor1 = setor()
-    setor2 = setor()
+    setor1 = Setor()
+    setor2 = Setor()
     setor1.setNome("TI")
     setor2.setNome("Manutenção predial")
 
-    setorDAO = setorDAO()
+    setorDAO = SetorDAO()
     setorDAO.create()
     setorDAO.update(setor1)
     setorDAO.update(setor2)
 
 
-    gerente = funcionario().gerente()
-    assistente = funcionario().assistente()
-    requerente = funcionario().requerente()
+    gerente = Funcionario().Gerente()
+    assistente = Funcionario().Assistente()
+    requerente = Funcionario().Requerente()
     
     gerente.setStatus("ativo")
     gerente.setSetor("TI")
@@ -34,11 +34,12 @@ def main():
 
 
     ### Caso de uso Requisitar Suporte
-    listaSetores = setorMGR.listarSetor()
-    listaPrioridade = pedidoMGR.listarPrioridadePedido()
-    listaResponse = pedidoMGR.listarResponse()
+    listaSetores = SetorMGR.listarSetor()
+    listaPrioridade = PedidoMGR.listarPrioridadePedido()
+    listaResponse = PedidoMGR.listarResponse()
 
-    pedido = pedido(requerente.login, listaSetores[0])
+    pedidoMGR = PedidoMGR()
+    pedido = Pedidos(requerente.login, listaSetores[0])
     pedido.setDescrip("Um monitor da sala xxxx precisa ser consertado.")
     pedido.setPriority(listaPrioridade[0])
 

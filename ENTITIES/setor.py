@@ -1,4 +1,4 @@
-class setor:
+class Setor:
     def __init__(self):
         self.pedidos = []
         self.nome = ""

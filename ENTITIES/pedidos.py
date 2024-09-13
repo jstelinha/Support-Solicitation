@@ -1,4 +1,4 @@
-class pedido:
+class Pedidos:
     def __init__(self, loginFuncionario:str, nSetor:int):
         self.loginFuncionario = loginFuncionario
         self.idPedido = nSetor

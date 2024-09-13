@@ -1,7 +1,7 @@
-from main.connect import DBController 
+from DAO.connect import DBController 
 
 
-class fluxoDAO:
+class FluxoDAO:
     def __cursorToListFluxo(self, row):
         connection = DBController().obterConnection()
         cursor = connection.cursor()

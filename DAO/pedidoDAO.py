@@ -1,8 +1,8 @@
 from DAO.connect import DBController 
-from ENTITIES.pedidos import prioridade, response
+from ENTITIES.Pedidos import prioridade, response
 
 
-class pedidoDAO:
+class PedidoDAO:
     def __cursorToListPedido(self, row):
         connection = DBController().obterConnection()
         cursor = connection.cursor()

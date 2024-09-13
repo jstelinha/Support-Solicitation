@@ -1,4 +1,4 @@
-class fPedido:
+class FPedido:
     def __init__(self, idPedido:int):
         self.status = ["retido", "aberto", "cancelado", "concluido", "andamento"]
         self.idPedido = idPedido

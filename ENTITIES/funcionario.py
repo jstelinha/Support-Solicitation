@@ -1,18 +1,18 @@
-class funcionario:
+class Funcionario:
     def __init__(self):
         self.status = ["ativo","ferias","inativo"]
 
-    class requerente:
+    class Requerente:
         def __init__(self, login:str):
-            self.login = funcionario.login
+            self.login = Funcionario.login
         
         def setStatus(self, stats:str):
             if stats in self.status:
                 self.stats = stats
             
-    class gerente:
+    class Gerente:
         def __init__(self, login:str):
-            self.login = funcionario.login
+            self.login = Funcionario.login
         
         def setSetor(self, setor:str):
             self.Setor = setor
@@ -21,9 +21,9 @@ class funcionario:
             if stats in self.status:
                 self.stats = stats
 
-    class assistente:
+    class Assistente:
         def __init__(self, login:str):
-            self.login = funcionario.login
+            self.login = Funcionario.login
 
         def setStatus(self, stats:str):
             if stats in self.status:

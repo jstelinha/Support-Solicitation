@@ -1,15 +1,15 @@
-from ENTITIES.fluxo import *
-from DAO.fluxoDAO import *
+from ENTITIES.Fluxo import *
+from DAO.FluxoDAO import *
 
 
-class fluxoMGR:
+class FluxoMGR:
     def RegistrarAndamento(pedido:object, status:str, data:int):
         try:
-            fluxo = fPedido()
+            fluxo = FPedido()
             fluxo.setStatus(status)
             fluxo.setData(data)
-            fluxoDAO.create()
-            return fluxoDAO.listByIds(pedido.idPedido)
+            FluxoMGR.create()
+            return FluxoMGR.listByIds(pedido.idPedido)
 
         except Exception as e:
             return e

@@ -1,3 +1,3 @@
-class fluxoDVO:
+class FluxoDVO:
     def __init__(self) -> None:
         pass

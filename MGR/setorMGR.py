@@ -1,8 +1,8 @@
-from ENTITIES.pedidos import *
-from DAO.setorDAO import *
+from ENTITIES.Pedidos import *
+from DAO.SetorDAO import *
 
 
-class setorMGR:
+class SetorMGR:
         def listarSetor(self):
             try:
                 setorDAO = setorDAO.create()
