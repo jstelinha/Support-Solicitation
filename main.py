@@ -11,10 +11,12 @@ from DVO.setorDVO import setorDVO
 def main():
     
     ##### Pré requisitos
-    setor1 = setor("TI")
-    setor2 = setor("Manutenção predial")
+    setor1 = setor()
+    setor2 = setor()
+    setor1.setNome("TI")
+    setor2.setNome("Manutenção predial")
 
-    setorDAO.create()
+    setorDAO.create(setor)
     setorDAO.update(setor1)
     setorDAO.update(setor2)
 

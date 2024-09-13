@@ -4,4 +4,4 @@ import mysql.connector
 
 class DBController:
     def obterConnection(self):
-        return mysql.connector.connect(user='if0_37164897', password='sz3FKlnrhUGEE', host='sql110.byetcluster.com')
+        return mysql.connector.connect(user='postgres', password='postgres', host='localhost')

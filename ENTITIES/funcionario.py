@@ -3,7 +3,7 @@ class funcionario:
         self.status = ["ativo","ferias","inativo"]
 
     class requerente:
-        def __init__(self):
+        def __init__(self, login:str):
             self.login = funcionario.login
         
         def setStatus(self, stats:str):
@@ -11,7 +11,7 @@ class funcionario:
                 self.stats = stats
             
     class gerente:
-        def __init__(self):
+        def __init__(self, login:str):
             self.login = funcionario.login
         
         def setSetor(self, setor:str):
@@ -22,7 +22,7 @@ class funcionario:
                 self.stats = stats
 
     class assistente:
-        def __init__(self):
+        def __init__(self, login:str):
             self.login = funcionario.login
 
         def setStatus(self, stats:str):

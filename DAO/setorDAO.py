@@ -14,15 +14,15 @@ class setorDAO:
         return result
 
     def __rowToSetor(self, row):
-        stor = setor()
-        stor.idSetor = (row['idSetor'])
-        stor.nome = (row['nome'])
-        stor.pedidos = (row['pedidos'])
-        return stor
+        setor = setor()
+        setor.idSetor = (row['idSetor'])
+        setor.nome = (row['nome'])
+        setor.pedidos = (row['pedidos'])
+        return setor
 
     def create(self):
-        stor = setor()
-        return stor
+        setor = setor()
+        return setor
     
     def update(self, setor:object):
       connection = DBController().obterConnection();
