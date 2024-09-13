@@ -14,11 +14,11 @@ class setorDAO:
         return result
 
     def __rowToSetor(self, row):
-        setor = setor()
-        setor.idSetor = (row['idSetor'])
-        setor.nome = (row['nome'])
-        setor.pedidos = (row['pedidos'])
-        return setor
+        stor = setor()
+        stor.idSetor = (row['idSetor'])
+        stor.nome = (row['nome'])
+        stor.pedidos = (row['pedidos'])
+        return stor
 
     def create(self):
         setor = setor()
