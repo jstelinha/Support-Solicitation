@@ -23,13 +23,13 @@ class setorDAO:
         setor = setor()
         return setor
     
-    def update(self, setor:object):
+    def update(self, setor):
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
       if not hasattr(setor, 'ids'):
         cursor.execute('INSERT INTO setor (idSetor, nome, pedidos) VALUES(?, ?)',
-          setor.idSetor, setor.pedidos, setor.nome)
+          setor.pedidos, setor.nome)
 
       else:
         cursor.execute('UPDATE setor SET nome=?, pedidos=? WHERE idSetor = ?',

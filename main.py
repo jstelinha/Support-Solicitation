@@ -1,26 +1,27 @@
-from ENTITIES.funcionario import *
-from ENTITIES.pedido import * 
-from ENTITIES.setor import * 
-from MGR.setorMGR import *
-from MGR.pedidoMGR import * 
-from DAO.pedidoDAO import * 
-from DAO.setorDAO import *
-from DVO.pedidoDVO import * 
-from DVO.setorDVO import *
+from ENTITIES.funcionario import funcionario
+from ENTITIES.pedido import pedido, prioridade, response
+from ENTITIES.setor import setor 
+from MGR.setorMGR import setorMGR
+from MGR.pedidoMGR import pedidoMGR 
+from DAO.setorDAO import setorDAO
+from DVO.pedidoDVO import pedidoDVO 
+from DVO.setorDVO import setorDVO
 
 
 def main():
-
+    
     ##### Pré requisitos
-    setor1 = setor(1, "TI")
-    setor2 = setor(2, "Manutenção predial")
+    setor1 = setor("TI")
+    setor2 = setor("Manutenção predial")
 
     setorDAO.update(setor1)
     setorDAO.update(setor2)
 
+
     gerente = funcionario().gerente()
     assistente = funcionario().assistente()
     requerente = funcionario().requerente()
+    
     gerente.setStatus("ativo")
     gerente.setSetor("TI")
     assistente.setStatus("ativo")
@@ -37,9 +38,12 @@ def main():
     pedido.setDescrip("Um monitor da sala xxxx precisa ser consertado.")
     pedido.setPriority(listaPrioridade[0])
 
-    pedidoMGR.realizarPedidoSuporte(pedido(), pedido.setor)
-##################################################################################################
+    # Corrigido: chamado o objeto diretamente
+    pedidoMGR.realizarPedidoSuporte(pedido, pedido.setor)
 
-    pedidoMGR.validarPedido(pedido(), "sim")
+    # Corrigido: chamado o objeto diretamente
+    pedidoMGR.validarPedido(pedido, "sim")
 
-main()
+
+if __name__ == "__main__":
+    main()
