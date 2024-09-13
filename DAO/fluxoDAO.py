@@ -24,10 +24,10 @@ class FluxoDAO:
 
       if not hasattr(fluxo, 'idPedido'):
         cursor.execute('INSERT INTO fluxo (idPedido, status, data) VALUES(?, ?, ?)',
-          fluxo.idPedido, fluxo.status, fluxo.data)
+          fluxo.status, fluxo.data)
       else:
         cursor.execute('UPDATE fluxo SET status=?, data=? WHERE idPedido = ?',
-          fluxo.status, fluxo.data, fluxo.idPedido)
+          fluxo.status, fluxo.data)
      
       cursor.close()
       connection.close()

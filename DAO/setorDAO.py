@@ -27,13 +27,13 @@ class SetorDAO:
 
         if not hasattr(setor, 'idSetor'):
             cursor.execute(
-                'INSERT INTO setor (nome, pedidos) VALUES(?, ?)',
+                'INSERT INTO setor (idSetor ,nome, pedidos) VALUES(?, ?, ?)',
                 (setor.nome, setor.pedidos)
             )
         else:
             cursor.execute(
                 'UPDATE setor SET nome=?, pedidos=? WHERE idSetor=?',
-                (setor.nome, setor.pedidos, setor.idSetor)
+                (setor.nome, setor.pedidos)
             )
 
         connection.commit()
@@ -75,7 +75,7 @@ class SetorDAO:
         connection = DBController().obterConnection()
         cursor = connection.cursor()
 
-        cursor.execute('SELECT pedido FROM setor WHERE id = ?', (id,))
+        cursor.execute('SELECT pedido FROM setor WHERE id = ?', id)
         result = self.__cursorToListSetor(cursor)
 
         cursor.close()

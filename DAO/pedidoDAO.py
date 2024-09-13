@@ -32,10 +32,10 @@ class PedidoDAO:
 
       if not hasattr(pedido, 'idPedido'):
         cursor.execute('INSERT INTO pedido (idPedido, login, desc, priority, response, fluxo) VALUES(?, ?, ?, ?)',
-          pedido.idPedido, pedido.login, pedido.desc, pedido.priority, pedido.response, pedido.fluxo)
+          pedido.login, pedido.desc, pedido.priority, pedido.response, pedido.fluxo)
       else:
         cursor.execute('UPDATE pedido SET login=? desc=?, priority=?, response=? WHERE idPedido = ?',
-          pedido.login, pedido.desc, pedido.priority, pedido.response, pedido.idPedido)
+          pedido.login, pedido.desc, pedido.priority, pedido.response)
      
       cursor.close()
       connection.close()
@@ -62,7 +62,7 @@ class PedidoDAO:
       connection = DBController().obterConnection();
       cursor = connection.cursor()
 
-      cursor.execute('SELECT * FROM pedido WHERE id = ?', id)
+      cursor.execute('SELECT * FROM pedido WHERE idPedido = ?', id)
       
       result = self.__cursorToListPedido(cursor)
      
