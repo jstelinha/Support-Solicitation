@@ -1,5 +1,5 @@
 from ENTITIES.funcionario import funcionario
-from ENTITIES.pedido import pedido, prioridade, response
+from ENTITIES.pedidos import pedido, prioridade, response
 from ENTITIES.setor import setor 
 from MGR.setorMGR import setorMGR
 from MGR.pedidoMGR import pedidoMGR 
@@ -14,6 +14,7 @@ def main():
     setor1 = setor("TI")
     setor2 = setor("Manutenção predial")
 
+    setorDAO.create()
     setorDAO.update(setor1)
     setorDAO.update(setor2)
 

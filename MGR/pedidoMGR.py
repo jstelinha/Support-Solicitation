@@ -1,5 +1,5 @@
 from ENTITIES.funcionario import *
-from ENTITIES.pedido import *
+from ENTITIES.pedidos import *
 from ENTITIES.setor import *   
 from DAO.pedidoDAO import *
 from DAO.setorDAO import *

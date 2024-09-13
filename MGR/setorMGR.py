@@ -1,4 +1,4 @@
-from ENTITIES.pedido import *
+from ENTITIES.pedidos import *
 from DAO.setorDAO import *
 
 

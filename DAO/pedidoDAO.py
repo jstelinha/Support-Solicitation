@@ -1,5 +1,5 @@
-from connect import DBController 
-from ENTITIES.pedido import prioridade, response
+from main.connect import DBController 
+from ENTITIES.pedidos import prioridade, response
 
 
 class pedidoDAO:

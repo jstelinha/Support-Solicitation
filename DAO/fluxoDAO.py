@@ -1,4 +1,4 @@
-from connect import DBController 
+from main.connect import DBController 
 
 
 class fluxoDAO:
