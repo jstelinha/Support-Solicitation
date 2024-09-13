@@ -16,7 +16,8 @@ def main():
     setor1.setNome("TI")
     setor2.setNome("Manutenção predial")
 
-    setorDAO.create(self=None)
+    setorDAO = setorDAO()
+    setorDAO.create()
     setorDAO.update(setor1)
     setorDAO.update(setor2)
 
