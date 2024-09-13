@@ -1,5 +1,5 @@
 class setor:
-    def __init__(self, nome:str):
+    def __init__(self):
         self.pedidos = []
         self.nome = ""
         
